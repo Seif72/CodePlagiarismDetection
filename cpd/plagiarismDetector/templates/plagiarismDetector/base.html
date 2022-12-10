@@ -1,7 +1,9 @@
  {# Load the tag library #}
  {% load bootstrap5 %}
+ {% comment %} {% load static %} {% endcomment %}
 
- {# Load CSS and JavaScript #}
+
+{# Load CSS and JavaScript #}
  {% bootstrap_css %}
  {% bootstrap_javascript %}
  
@@ -11,33 +13,39 @@
 <!DOCTYPE html>
 <html>
 <head>
+
+    {% comment %} <link rel="stylesheet" type="text/css" href="{% static 'plagiarismDetector/main.css' %}"> {% endcomment %}
+
     {% if title %}
         <title>CPD - {{ title }}</title>
     {% else %}
         <title>CPD</title>
     {% endif %}
 </head>
-<nav class="navbar navbar-dark bg-dark">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="#">Navbar</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="{% url 'about' %}">About</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
 <body>
-    <div class="container">
-        {% block content %}{% endblock %}
+  <nav class="navbar navbar-expand-lg bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="{% url 'home' %}">CPD</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{% url 'about' %}">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{% url 'upload' %}">Upload File</a>
+          </li>
+        </ul>
+      </div>
     </div>
+  </nav>
+  <div class="container">
+    {% block content %}{% endblock %}
+  </div>
 </body>
 </html>

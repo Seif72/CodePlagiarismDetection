@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'plagiarismDetector.apps.PlagiarismdetectorConfig',
     'bootstrap5',
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [
